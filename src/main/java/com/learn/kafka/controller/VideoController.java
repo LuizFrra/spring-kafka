@@ -1,7 +1,5 @@
 package com.learn.kafka.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learn.kafka.DTOs.VideoDTO;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +17,6 @@ public class VideoController {
 
     @Autowired
     private KafkaTemplate<Object, Object> kafkaTemplate;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @PostMapping
     public ResponseEntity<VideoDTO> publishVideo(@RequestBody VideoDTO videoDTO) {
