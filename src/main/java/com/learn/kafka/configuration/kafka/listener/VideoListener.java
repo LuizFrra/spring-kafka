@@ -16,8 +16,8 @@ public class VideoListener {
     private final String GROUP_ID = "videoListener";
 
     @KafkaListener(topics = {TOPIC}, groupId = GROUP_ID)
-    public void videoListener(String message) {
+    public void videoListener(VideoDTO videoDTO) {
         log.info("Receiving Message from Topic {}", TOPIC);
-        log.info(message);
+        log.info(String.valueOf(videoDTO));
     }
 }

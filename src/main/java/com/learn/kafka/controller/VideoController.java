@@ -25,12 +25,7 @@ public class VideoController {
 
     @PostMapping
     public ResponseEntity<VideoDTO> publishVideo(@RequestBody VideoDTO videoDTO) {
-        try {
-            kafkaTemplate.send(new ProducerRecord<>("video", objectMapper.writeValueAsString(videoDTO)));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        kafkaTemplate.send(new ProducerRecord<>("video", videoDTO));
         return new ResponseEntity<>(videoDTO, HttpStatus.CREATED);
     }
 }
